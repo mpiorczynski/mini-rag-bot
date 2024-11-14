@@ -41,4 +41,5 @@ conda create -n mini-rag-dev -y python=3.12
 conda activate mini-rag-dev
 pip install --upgrade pip
 pip install -r requirements-dev.txt
+pre-commit install
 ```
