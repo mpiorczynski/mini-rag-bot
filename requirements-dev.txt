@@ -2,3 +2,4 @@ ruff==0.7.1
 pre-commit==4.0.1
 vllm
 fastapi[standard]
+beautifulsoup4==4.12.3
