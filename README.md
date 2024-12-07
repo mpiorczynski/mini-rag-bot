@@ -13,14 +13,18 @@ mini-rag-bot/
 │
 ├── data/
 │   ├── raw/                            # Raw data (HTML, PDFs, etc.)
-│   ├── processed/                      # Processed data (extracted text, chunks, etc.)
+│   └── processed/                      # Processed data (extracted text, chunks, etc.)
 │
 ├── modules/
 │   ├── data_acquisition/               # For data scraping, file handling, etc.
 │   ├── data_processing/                # Text extraction and processing (HTML, PDF, etc.)
 │   ├── llm/                            # LLM-related functions (embedding, fine-tuning, etc.)
 │   ├── app_logic/                      # Main app logic related to handling queries and managing user interaction
-│   ├── utils/                          # Utility functions (logging, configuration, etc.)
+│   └── utils/                          # Utility functions (logging, configuration, etc.)
+│
+├── deployment/
+│   ├── llm/                            # Deployment files for LLM (e.g. Llama3.1 8b)
+│   └── embedder/                       # REST API for embedding model
 │
 ├── notebooks/                          # Jupyter notebooks for experiments and prototyping
 │
