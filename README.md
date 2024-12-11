@@ -47,3 +47,29 @@ pip install --upgrade pip
 pip install -r requirements-dev.txt
 pre-commit install
 ```
+
+### Data scraping
+
+This process take quite long time. We provide processed data as link to data within Google Drive (inside `data/processed` folder).
+
+Run in the project directory:
+
+```bash
+python modules/data_acquisition/page_scraping.py --start-url https://ww2.mini.pw.edu.pl/ --data_path ./data
+```
+
+### Data preprocessing
+
+Run in the project directory:
+
+```bash
+python modules/data_processing/parse_to_text.py
+```
+
+### Chunk and embed processed data
+
+Run in the project directory:
+
+```bash
+python modules/vector_store/chunk_and_embed.py
+```
