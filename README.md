@@ -38,7 +38,7 @@ mini-rag-bot/
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Environment - setup
+### Environment setup
 
 ```bash
 conda create -n mini-rag-dev -y python=3.12
