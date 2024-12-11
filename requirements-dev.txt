@@ -6,3 +6,5 @@ fastapi[standard]
 beautifulsoup4==4.12.3
 sentence-transformers
 langchain-chroma>=0.1.2
+streamlit==1.40.2
+chromadb==0.5.23
