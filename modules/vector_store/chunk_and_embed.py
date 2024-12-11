@@ -3,9 +3,27 @@ from typing import List
 from uuid import uuid4
 
 import chromadb
+import requests
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
+
+EMBEDDING_MODEL_API_URL = "http://localhost:8000/embeddings"
+
+
+class SentenceTransformerWrapperAPI:
+    def __init__(self):
+        pass
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        response = requests.post(EMBEDDING_MODEL_API_URL, json={"messages": texts})
+        response.raise_for_status()
+        return response.json()["embeddings"]
+
+    def embed_query(self, query: str) -> List[float]:
+        response = requests.post(EMBEDDING_MODEL_API_URL, json={"messages": query})
+        response.raise_for_status()
+        return response.json()["embeddings"][0]
 
 
 class SentenceTransformerWrapper:
@@ -24,7 +42,8 @@ if __name__ == "__main__":
     processed_data_dir = "data/processed"
     collection_name = "mini-rag-poc"
 
-    embedder = SentenceTransformerWrapper("all-MiniLM-L6-v2")
+    # embedder = SentenceTransformerWrapper("all-MiniLM-L6-v2")
+    embedder = SentenceTransformerWrapperAPI()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
     chroma_client = chromadb.PersistentClient(path=db_directory)
