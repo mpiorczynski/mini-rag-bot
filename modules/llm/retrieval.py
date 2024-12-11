@@ -5,7 +5,7 @@ from langchain_chroma import Chroma
 from sentence_transformers import SentenceTransformer
 
 DB_DIRECTORY = "data/db"
-EMBEDDING_MODEL_API_URL = "http://localhost:8000/embeddings"
+EMBEDDING_MODEL_API_URL = "http://localhost:8080/embeddings"
 
 
 class SentenceTransformerWrapperAPI:

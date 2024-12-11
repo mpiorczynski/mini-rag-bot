@@ -1,6 +1,6 @@
 import requests
 
-LLM_API_URL = "http://localhost:8765/v1/chat/completions"
+LLM_API_URL = "http://localhost:8000/v1/chat/completions"
 
 
 def generate_response(
