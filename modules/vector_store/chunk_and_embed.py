@@ -8,7 +8,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
 
-EMBEDDING_MODEL_API_URL = "http://localhost:8000/embeddings"
+EMBEDDING_MODEL_API_URL = "http://localhost:8080/embeddings"
 
 
 class SentenceTransformerWrapperAPI:
