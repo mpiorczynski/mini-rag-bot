@@ -42,5 +42,45 @@
     {
       "question": "Jaki stopień naukowy ma Przemysław Grzegorzewski i jaki jemu odpowiada zwrot grzecznościowy?",
       "answer": "Przemysław Grzegorzewski posiada stopień naukowy profesora doktora habilitowanego. Odpowiedni zwrot grzecznościowy to 'Panie Profesorze'."
-    }
+    },
+      {
+      "question": "Jaka jest oferta kierunków studiów I stopnia na MiNI?",
+      "answer": "Na Wydziale Matematyki i Nauk Informacyjnych (MiNI) Politechniki Warszawskiej dostępne są następujące kierunki studiów I stopnia:\n\n1. Matematyka\n   - Tytuł zawodowy: licencjat\n   - Długość programu: 6 semestrów\n   - Język wykładowy: polski\n   - Opis kierunku: https://ww2.mini.pw.edu.pl/studia/inzynierskie-i-licencjackie/matematyka-2/\n   - Program studiów: https://ects.coi.pw.edu.pl/menu2/detail2test/idProgram/2154/idWydzial/13/idStopien/3\n\n2. Matematyka i Analiza Danych\n   - Tytuł zawodowy: licencjat\n   - Długość programu: 6 semestrów\n   - Język wykładowy: polski\n   - Opis kierunku: https://ww2.mini.pw.edu.pl/studia/inzynierskie-i-licencjackie/matematyka-i-analiza-danych/\n   - Program studiów: https://ects.coi.pw.edu.pl/menu2/detail2test/idProgram/2155/idWydzial/13/idStopien/3\n\n3. Informatyka i Systemy Informacyjne\n   - Tytuł zawodowy: inżynier\n   - Długość programu: 7 semestrów\n   - Język wykładowy: polski\n   - Opis kierunku: https://ww2.mini.pw.edu.pl/studia/inzynierskie-i-licencjackie/informatyka-2/\n   - Program studiów: https://ects.coi.pw.edu.pl/menu2/detail2test/idProgram/2152/idWydzial/13/idStopien/1\n\n4. Computer Science and Information Systems\n   - Tytuł zawodowy: inżynier\n   - Długość programu: 7 semestrów\n   - Język wykładowy: angielski\n   - Opis kierunku: https://ww2.mini.pw.edu.pl/studia/inzynierskie-i-licencjackie/computer-science-2/\n   - Program studiów: https://ects.coi.pw.edu.pl/menu2/detail2test/idProgram/2151/idWydzial/13/idStopien/1\n\n5. Inżynieria i Analiza Danych\n   - Tytuł zawodowy: inżynier\n   - Długość programu: 7 semestrów\n   - Język wykładowy: polski\n   - Opis kierunku: https://ww2.mini.pw.edu.pl/studia/inzynierskie-i-licencjackie/inzynieria-i-analiza-danych/\n   - Program studiów: https://ects.coi.pw.edu.pl/menu2/detail2test/idProgram/2153/idWydzial/13/idStopien/1\n\nWięcej informacji można znaleźć na stronie Wydziału MiNI."
+    },
+    {
+        "question": "Jakie koła naukowe działają na MiNI?",
+        "answer": "Na Wydziale MiNI Politechniki Warszawskiej działają następujące koła naukowe i artystyczne: \n1. Koło Naukowe Business in Technology\n2. Koło Naukowe DataScience\n3. Koło Naukowe Informatyków\n4. Koło Naukowe Kombinatoryczno-Algebraiczne Koala\n5. Koło Naukowe Matematyków\n6. Koło Naukowe Modelowania Matematycznego\n7. Koło Artystyczne 'TeMat'\n8. Koło Naukowe Wirtualnej Rzeczywistości"
+      },
+    {
+        "question": "Czym zajmuje się ośrodek badań dla biznesu?",
+        "answer": "Ośrodek Badań dla Biznesu na Wydziale MiNI PW zajmuje się współpracą z przedsiębiorstwami, realizując projekty matematyczno-informatyczne, wspierając innowacje oraz łącząc studentów z biznesem. Szczegółowe informacje można znaleźć na stronie internetowej Ośrodka: obb.mini.pw.edu.pl."
+      },
+    {
+        "question": "Kto jest przewodniczącym komisji programowej dla kierunku Inżynieria i Analiza Danych?",
+        "answer": "Przewodniczącym komisji programowej dla kierunku Inżynieria i Analiza Danych jest dr hab. inż. Maciej Grzenda, prof. PW."
+      },
+    {
+        "question": "Kto jest przewodniczącym komisji egzaminu dyplomowego dla kierunku Inżynieria i Analiza Danych?",
+        "answer": "Przewodniczącym komisji egzaminu dyplomowego dla kierunku Inżynieria i Analiza Danych jest dr hab. inż. Marek Gągolewski, prof. PW."
+      },
+    {
+        "question": "Ile wynosi kwota dochodu na osobę w rodzinie uprawniająca do stypendium socjalnego?",
+        "answer": "Kwota dochodu na osobę w rodzinie studenta uprawniającą do otrzymania stypendium socjalnego oraz stypendium socjalnego w zwiększonej wysokości wynosi 1 570,50 zł."
+      },
+    {
+        "question": "Ile wynosi kwota stypendium rektora?",
+        "answer": "Wysokość stypendium rektora wynosi 850 zł."
+      },
+    {
+        "question": "Do kiedy trwa pierwsza tura rekrutacji do programu Erasmus+?",
+        "answer": "W 2024 roku pierwsza tura rekrutacji do programu Erasmus+ trwała od 4 do 10 marca."
+      },
+    {
+        "question": "Kto jest koordynatorem programu Erasmus+ na MiNI?",
+        "answer": "Pełnomocnikiem Dziekana ds. Studenckich Programów Międzynarodowych, w tym programu Erasmus+, na Wydziale MiNI jest dr inż. Magdalena Jasionowska-Skop."
+    },
+        {
+        "question": "Ile wynosi opłata za wznowienie studiów na MiNI?",
+        "answer": "Opłata za wznowienie studiów na Wydziale Matematyki i Nauk Informacyjnych wynosi 80 zł."
+      }
   ]
