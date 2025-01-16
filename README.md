@@ -20,6 +20,7 @@ mini-rag-bot/
 │   ├── data_processing/                # Text extraction and processing (HTML, PDF, etc.)
 │   ├── llm/                            # LLM-related functions (embedding, fine-tuning, etc.)
 │   ├── app_logic/                      # Main app logic related to handling queries and managing user interaction
+│   ├── evaluation/                     # Evaluation-related files
 │   └── utils/                          # Utility functions (logging, configuration, etc.)
 │
 ├── deployment/
@@ -72,4 +73,10 @@ Run in the project directory:
 
 ```bash
 python modules/vector_store/chunk_and_embed.py
+```
+
+### Evaluate models performance using RAGAS framework
+
+```bash
+python -m modules.evaluation.ragas_evaluation
 ```
