@@ -8,7 +8,11 @@ from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
 
-EMBEDDING_MODEL_API_URL = "http://localhost:8080/embeddings"
+# MODEL_NAME = "Alibaba-NLP/gte-Qwen2-7B-instruct"
+# MODEL_NAME = "Alibaba-NLP/gte-Qwen2-1.5B-instruct"
+MODEL_NAME = "jinaai/jina-embeddings-v3"
+DB_DIRECTORY = f"data/db/{MODEL_NAME.split('/')[-1]}"
+EMBEDDING_MODEL_API_URL = "http://localhost:8085/embeddings"
 
 
 class SentenceTransformerWrapperAPI:
@@ -38,9 +42,9 @@ class SentenceTransformerWrapper:
 
 
 if __name__ == "__main__":
-    db_directory = "data/db"
+    db_directory = DB_DIRECTORY
     processed_data_dir = "data/processed"
-    collection_name = "mini-rag-poc"
+    collection_name = "mini-rag-bot"
 
     # embedder = SentenceTransformerWrapper("all-MiniLM-L6-v2")
     embedder = SentenceTransformerWrapperAPI()

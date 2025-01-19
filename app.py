@@ -1,5 +1,6 @@
 import streamlit as st
 
+from modules.llm.generation import MODEL_NAME as LLM_MODEL_NAME
 from modules.llm.generation import generate_response
 from modules.llm.prompts import construct_llm_prompt
 from modules.llm.retrieval import retrieve_k_most_similar_chunks
@@ -9,6 +10,7 @@ ICONS = {
     "user": "👨",
 }
 CHUNK_SEPARATOR = "\n\n" + "####" * 20 + "\n\n"
+GENERATION_KWARGS = {"temperature": 0.2, "min_p": 0.1}
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
@@ -21,6 +23,7 @@ if "messages" not in st.session_state:
 st.set_page_config(page_title="MiNI RAG Chatbot", page_icon="🤖")
 
 st.title("MiNI RAG Chatbot")
+
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"], avatar=ICONS[message["role"]]):
@@ -46,7 +49,7 @@ if user_input := st.chat_input(
                 chat_history=st.session_state.messages,
             )
 
-            response = generate_response(prompt)
+            response = generate_response(prompt, LLM_MODEL_NAME, **GENERATION_KWARGS)
             response = response["choices"][0]["message"]["content"]
 
         # response = "Przepraszam, nie potrafię odpowiedzieć na to pytanie. 😔"

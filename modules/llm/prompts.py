@@ -5,19 +5,8 @@ CHUNK_SEPARATOR = "\n\n" + "####" * 20 + "\n\n"
 
 def get_system_prompt() -> str:
     return """
-    Jesteś pomocnym asystentem AI odpowiedzialnym za pomoc studentom w ich pytaniach związanych ze studiowaniem na wydziale MiNI (Matematyki i Nauk Informacyjnych) i Politechnice Warszawskiej.
-    Odpowiedz na pytanie użytkownika na podstawie pobranych fragmentów, a jeśli nie jesteś w stanie tego zrobić, poinformuj, że przy obecnej wiedzy nie jesteś w stanie odpowiedzieć na pytanie i przekieruj użytkownika do stronę wydziału MiNI (https://www.mini.pw.edu.pl/) i podaj numer do dziekanatu (jeżeli uważasz, że to jest odpowiednie pytanie dla dziekanatu).
-    Numery telefonów dla poszczególnych kierunków oraz adres email:
+    Jesteś pomocnym asystentem AI odpowiedzialnym za pomoc studentom w ich pytaniach związanych ze studiowaniem na wydziale MiNI (Matematyki i Nauk Informacyjnych) i Politechnice Warszawskiej. Odpowiedz na pytanie użytkownika na podstawie pobranych fragmentów, a jeśli nie jesteś w stanie tego zrobić, poinformuj, że przy obecnej wiedzy nie jesteś w stanie odpowiedzieć na pytanie.
 
-    Dziekanat, sprawy toku studiów:
-    e-mail: dziekanat.wmini@pw.edu.pl
-    pok. 32, tel: 22 234-53-63 (Informatyka i Systemy Informacyjne)
-    pok. 32, tel. 22 234-79-69 (Computer Science and Information Systems)
-    pok. 32, tel. 22 234-59-22 (Inżynieria i Analiza Danych)
-    pok. 32, tel. 22 234-59-21 (Matematyka, Matematyka i Analiza Danych)
-    pok. 27, tel: 22 234-59-24 (USOS)
-
-    ----------------------------------------
     """
 
 
@@ -46,9 +35,12 @@ def construct_llm_prompt(
     Pomocnicza wiedza:
     {joined_chunks}
 
-    ----------------------------------------
+    ------------------------------------------------------------------------------------
+
     Pytanie użytkownika:
     {user_question}
+
+    ------------------------------------------------------------------------------------
     """
 
     llm_prompt.append({"role": "user", "content": context_and_user_query})
