@@ -1,7 +1,7 @@
 import streamlit as st
 
 from modules.llm.generation import generate_response
-from modules.llm.prompts import get_prompt
+from modules.llm.prompts import construct_llm_prompt
 from modules.llm.retrieval import retrieve_k_most_similar_chunks
 
 ICONS = {
@@ -39,13 +39,11 @@ if user_input := st.chat_input(
     with container_for_response:
         with st.spinner("Thinking..."):
             chunks = retrieve_k_most_similar_chunks(user_input, k=5)
-            joined_chunks = (
-                "####" * 20 + "\n\n" + CHUNK_SEPARATOR.join(chunks) + "\n\n" + "####" * 20
-            )
 
-            prompt = get_prompt().format(
+            prompt = construct_llm_prompt(
                 user_question=user_input,
-                chunks=joined_chunks,
+                chunks=chunks,
+                chat_history=st.session_state.messages,
             )
 
             response = generate_response(prompt)
