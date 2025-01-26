@@ -4,8 +4,14 @@ import requests
 from langchain_chroma import Chroma
 from sentence_transformers import SentenceTransformer
 
-DB_DIRECTORY = "data/db"
-EMBEDDING_MODEL_API_URL = "http://localhost:8080/embeddings"
+# Choose the model you want to use
+MODEL_NAME = "Alibaba-NLP/gte-Qwen2-7B-instruct"
+# MODEL_NAME = "Alibaba-NLP/gte-Qwen2-1.5B-instruct"
+# MODEL_NAME = "jinaai/jina-embeddings-v3"
+
+DB_DIRECTORY = f"data/db/{MODEL_NAME.split('/')[-1]}"
+# Replace Embedding API URL with the URL of the API you deployed
+EMBEDDING_MODEL_API_URL = "http://localhost:8085/embeddings"
 
 
 class SentenceTransformerWrapperAPI:
@@ -38,7 +44,7 @@ class SentenceTransformerWrapper:
 embedder = SentenceTransformerWrapperAPI()
 
 vector_store = Chroma(
-    collection_name="mini-rag-poc",
+    collection_name="mini-rag-bot",
     embedding_function=embedder,
     persist_directory=DB_DIRECTORY,
 )
