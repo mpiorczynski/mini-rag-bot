@@ -52,8 +52,6 @@ if user_input := st.chat_input(
             response = generate_response(prompt, LLM_MODEL_NAME, **GENERATION_KWARGS)
             response = response["choices"][0]["message"]["content"]
 
-        # response = "Przepraszam, nie potrafię odpowiedzieć na to pytanie. 😔"
-
     st.session_state.messages.append(
         {
             "role": "bot",

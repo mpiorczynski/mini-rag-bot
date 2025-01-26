@@ -4,10 +4,13 @@ import requests
 from langchain_chroma import Chroma
 from sentence_transformers import SentenceTransformer
 
+# Choose the model you want to use
 MODEL_NAME = "Alibaba-NLP/gte-Qwen2-7B-instruct"
 # MODEL_NAME = "Alibaba-NLP/gte-Qwen2-1.5B-instruct"
 # MODEL_NAME = "jinaai/jina-embeddings-v3"
+
 DB_DIRECTORY = f"data/db/{MODEL_NAME.split('/')[-1]}"
+# Replace Embedding API URL with the URL of the API you deployed
 EMBEDDING_MODEL_API_URL = "http://localhost:8085/embeddings"
 
 

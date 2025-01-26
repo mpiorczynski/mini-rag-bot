@@ -1,5 +1,5 @@
 import json
-import time
+import os
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -7,27 +7,27 @@ import requests
 from datasets import Dataset
 from langchain_core.callbacks.manager import CallbackManagerForLLMRun
 from langchain_core.language_models.llms import LLM
-from langchain_openai import OpenAIEmbeddings
 from ragas import evaluate
-from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 from ragas.metrics import (
     ContextPrecision,
     FactualCorrectness,
     Faithfulness,
     LLMContextRecall,
-    NoiseSensitivity,
-    ResponseRelevancy,
 )
 
-from modules.llm.generation import LLM_API_URL, generate_response
-from modules.llm.generation import MODEL_NAME as LLM_MODEL_NAME
+from modules.llm.generation import generate_response
 from modules.llm.prompts import get_prompt
-from modules.llm.retrieval import MODEL_NAME as EMBEDDER_MODEL_NAME
 from modules.llm.retrieval import retrieve_k_most_similar_chunks
 
 CHUNK_SEPARATOR = "\n\n" + "####" * 20 + "\n\n"
-GENERATION_KWARGS = {"temperature": 0.2, "min_p": 0.1}
+
+USE_GENERATION_KWARGS = ...
+LLM_API_URL = ...
+LLM_MODEL_NAME = ...
+EMBEDDER_MODEL_NAME = ...
+
+GENERATION_KWARGS = {"temperature": 0.2, "min_p": 0.1} if USE_GENERATION_KWARGS else {}
 
 
 class CustomLLM(LLM):
@@ -68,15 +68,12 @@ def load_golden_dataset(filepath):
 
 def evaluate_chatbot_responses(golden_dataset):
     evaluator_llm = LangchainLLMWrapper(CustomLLM())
-    evaluator_embeddings = LangchainEmbeddingsWrapper(OpenAIEmbeddings())
 
     metrics = [
         LLMContextRecall(llm=evaluator_llm),
         FactualCorrectness(llm=evaluator_llm),
         Faithfulness(llm=evaluator_llm),
         ContextPrecision(llm=evaluator_llm),
-        NoiseSensitivity(llm=evaluator_llm, max_retries=5),
-        ResponseRelevancy(llm=evaluator_llm, embeddings=evaluator_embeddings),
     ]
 
     questions = []
@@ -116,9 +113,10 @@ def evaluate_chatbot_responses(golden_dataset):
         **GENERATION_KWARGS,
     }
 
-    # save the dataset as json
-    timestamp = time.strftime("%Y%m%d-%H:%M:%S")
-    with open(f"data/{timestamp}_evaluation_results.json", "w") as f:
+    with open(
+        f"data/data_{LLM_MODEL_NAME.replace("/", '_').replace("-", '_')}_{EMBEDDER_MODEL_NAME.replace("/", "_").replace("-", "_")}_default_params_{not USE_GENERATION_KWARGS}.json",
+        "w",
+    ) as f:
         json.dump(data_samples, f)
 
     print("Evaluation results saved to disk.")
@@ -132,4 +130,14 @@ if __name__ == "__main__":
     golden_dataset = load_golden_dataset("data/golden_dataset.json")
     evaluation_results = evaluate_chatbot_responses(golden_dataset)
     print(evaluation_results)
+
+    if not os.path.exists("data/results"):
+        os.makedirs("data/results")
+
+    with open(
+        f"data/results/results_{LLM_MODEL_NAME.replace("/", '_').replace("-", '_')}_{EMBEDDER_MODEL_NAME.replace("/", "_").replace("-", "_")}_default_params_{not USE_GENERATION_KWARGS}.json",
+        "w",
+    ) as f:
+        json.dump(evaluation_results, f)
+
     print("Evaluation completed successfully.")
