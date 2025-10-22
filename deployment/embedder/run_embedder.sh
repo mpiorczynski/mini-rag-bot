@@ -7,9 +7,10 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=6GB
 #SBATCH --time=1-00:00:00
-#SBATCH --output=logs/llm-%j.log
+#SBATCH --output=logs/embedder-%j.log
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=<FILL_THIS>
+
 
 set -e
 hostname; pwd; date
@@ -20,13 +21,5 @@ source .env
 eval "$(conda shell.bash hook)"
 conda activate mini-rag-dev
 
-huggingface-cli login --token $HF_TOKEN
-
-# Bielik-11B
-TMPDIR=/tmp vllm serve speakleash/Bielik-11B-v2.3-Instruct \
-    --port 8086 \
-    --download_dir $PROJECT_DIR/.cache \
-    --dtype float16 \
-    --gpu-memory-utilization 0.95 \
-    --enforce-eager \
-    --trust-remote-code
+cd $PROJECT_DIR/deployment/embedder
+uvicorn embedder_api:app --port 8080 --host 0.0.0.0

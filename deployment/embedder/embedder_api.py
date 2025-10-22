@@ -1,10 +1,16 @@
+import os
 from typing import List, Union
 
+import torch
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("Alibaba-NLP/gte-Qwen2-1.5B-instruct", trust_remote_code=True)
+project_dir = os.environ['PROJECT_DIR']
+cache_dir = os.path.join(project_dir, ".cache")
+model_kwargs = {"torch_dtype": torch.bfloat16}
+
+model = SentenceTransformer("Alibaba-NLP/gte-Qwen2-1.5B-instruct", trust_remote_code=True, cache_folder=cache_dir, trust_remote_code=True, model_kwargs=model_kwargs)
 
 app = FastAPI()
 
